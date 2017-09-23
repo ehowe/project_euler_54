@@ -2,7 +2,10 @@ require 'active_support/core_ext/string'
 
 class Poker # :nodoc:
   def self.play(player1, player2)
-    lines = File.readlines('poker.txt').map(&:strip).map { |h| h.gsub(/\s/, '').chars.each_slice(2).map(&:join).each_slice(5).to_a }
+    lines = File.readlines('poker.txt').map(&:strip).map do |hands|
+      # split each line into 2 arrays of 5 elements
+      hands.gsub(/\s/, '').chars.each_slice(2).map(&:join).each_slice(5).to_a
+    end
 
     player1_hands = lines.map(&:first)
     player2_hands = lines.map(&:last)

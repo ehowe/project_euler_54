@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-09-22T22:34:04-04:00">2017-09-22T22:34:04-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-09-22T22:43:46-04:00">2017-09-22T22:43:46-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         4253.61
+         4204.71
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>4</b> files in total.
-    <b>86</b> relevant lines. 
-    <span class="green"><b>86</b> lines covered</span> and
+    <b>87</b> relevant lines. 
+    <span class="green"><b>87</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -83,11 +83,11 @@
       <tr>
         <td class="strong"><a href="#b8b0d1657186b7096c3a06cbcdbcf71f787db637" class="src_link" title="poker.rb">poker.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>16</td>
-        <td>9</td>
-        <td>9</td>
+        <td>19</td>
+        <td>10</td>
+        <td>10</td>
         <td>0</td>
-        <td>334.1</td>
+        <td>300.7</td>
       </tr>
       
     </tbody>
@@ -1119,8 +1119,8 @@
     <h3>poker.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>9</b> relevant lines. 
-      <span class="green"><b>9</b> lines covered</span> and
+      <b>10</b> relevant lines. 
+      <span class="green"><b>10</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1152,28 +1152,28 @@
           <code class="ruby">  def self.play(player1, player2)</code>
         </li>
       
-        <li class="covered" data-hits="1001" data-linenumber="5">
-          <span class="hits">1001</span>
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
           
-          <code class="ruby">    lines = File.readlines(&#39;poker.txt&#39;).map(&amp;:strip).map { |h| h.gsub(/\s/, &#39;&#39;).chars.each_slice(2).map(&amp;:join).each_slice(5).to_a }</code>
+          <code class="ruby">    lines = File.readlines(&#39;poker.txt&#39;).map(&amp;:strip).map do |hands|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="6">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">      # split each line into 2 arrays of 5 elements</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="1000" data-linenumber="7">
+          <span class="hits">1000</span>
           
-          <code class="ruby">    player1_hands = lines.map(&amp;:first)</code>
+          <code class="ruby">      hands.gsub(/\s/, &#39;&#39;).chars.each_slice(2).map(&amp;:join).each_slice(5).to_a</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="8">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="8">
           
-          <code class="ruby">    player2_hands = lines.map(&amp;:last)</code>
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="9">
@@ -1185,13 +1185,13 @@
         <li class="covered" data-hits="1" data-linenumber="10">
           <span class="hits">1</span>
           
-          <code class="ruby">    player1_hands.each_with_index do |hand, i|</code>
+          <code class="ruby">    player1_hands = lines.map(&amp;:first)</code>
         </li>
       
-        <li class="covered" data-hits="1000" data-linenumber="11">
-          <span class="hits">1000</span>
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
           
-          <code class="ruby">      hands = [Hand.new(player1, hand), Hand.new(player2, player2_hands[i])].sort</code>
+          <code class="ruby">    player2_hands = lines.map(&amp;:last)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="12">
@@ -1200,25 +1200,43 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1000" data-linenumber="13">
-          <span class="hits">1000</span>
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
           
-          <code class="ruby">      hands.last.player.wins += 1</code>
+          <code class="ruby">    player1_hands.each_with_index do |hand, i|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="14">
+        <li class="covered" data-hits="1000" data-linenumber="14">
+          <span class="hits">1000</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">      hands = [Hand.new(player1, hand), Hand.new(player2, player2_hands[i])].sort</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1000" data-linenumber="16">
+          <span class="hits">1000</span>
+          
+          <code class="ruby">      hands.last.player.wins += 1</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
+          
+          
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="16">
+        <li class="never" data-hits="" data-linenumber="19">
           
           
           <code class="ruby">end</code>
